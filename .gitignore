@@ -1,0 +1,3 @@
+# Written by scripts/install.sh so the popup can show where this copy lives
+local-install.json
+.DS_Store

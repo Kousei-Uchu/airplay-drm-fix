@@ -1,14 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Netflix & Disney+ AirPlay Fix",
-  "version": "2.0",
+  "name": "AirPlay Widevine Fix",
+  "version": "3.0.0",
   "author": "Kousei Uchu",
-  "homepage_url": "https://github.com/Kousei-Uchu/netflix-disney-screenshare-fix",
-  "description": "Prevents black screen on AirPlay",
+  "homepage_url": "https://github.com/Kousei-Uchu/airplay-drm-fix",
+  "description": "Works around AirPlay showing a black screen for Widevine-protected video in non-Apple browsers.",
+  "minimum_chrome_version": "102",
   "permissions": [
     "scripting",
     "activeTab",
-    "declarativeContent"
+    "storage",
+    "alarms"
   ],
   "host_permissions": [
     "*://*.netflix.com/*",
@@ -17,6 +19,10 @@
     "*://*.disney-plus.net/*",
     "*://*.dssedge.com/*",
     "*://*.search-api-disney.bamgrid.com/*",
+    "https://api.github.com/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -27,22 +33,7 @@
       "128": "icon.png"
     }
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "*://*.netflix.com/*",
-        "*://*.disneyplus.com/*",
-        "*://*.dssott.com/*",
-        "*://*.disney-plus.net/*",
-        "*://*.dssedge.com/*",
-        "*://*.search-api-disney.bamgrid.com/*",
-      ],
-      "js": [
-        "injected.js"
-      ],
-      "run_at": "document_start",
-      "world": "MAIN",
-      "all_frames": true
-    }
-  ]
+  "icons": {
+    "128": "icon.png"
+  }
 }

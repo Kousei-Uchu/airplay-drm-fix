@@ -4,16 +4,26 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body {
-    width: 300px;
+    width: 360px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
     background: #0f0f0f;
     color: #fff;
-    overflow: hidden;
 }
 
 .container {
-    padding: 20px;
+    padding: 18px 20px 20px;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px;
+    color: #cfd8e3;
 }
 
 /* Header */
@@ -21,7 +31,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .logo {
@@ -35,6 +45,50 @@ h1 {
     font-weight: 600;
     color: #fff;
     letter-spacing: -0.3px;
+    flex: 1;
+}
+
+.version {
+    font-size: 11px;
+    color: #777;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 4px;
+    padding: 3px;
+    margin-bottom: 14px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+}
+
+.tab {
+    flex: 1;
+    padding: 7px 0;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #999;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.tab:hover {
+    color: #fff;
+}
+
+.tab.active {
+    background: #2a2a2a;
+    color: #fff;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 /* Toggle Section */
@@ -65,6 +119,10 @@ h1 {
     font-weight: 500;
     color: #fff;
     transition: color 0.2s ease;
+}
+
+#status-text.inactive {
+    color: #999;
 }
 
 .status-desc {
@@ -110,7 +168,7 @@ h1 {
 }
 
 input:checked+.slider {
-    background: #e50914;
+    background: #0a84ff;
 }
 
 input:checked+.slider:before {
@@ -118,75 +176,227 @@ input:checked+.slider:before {
     background: #fff;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+input:focus-visible+.slider {
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3);
 }
 
 .slider:hover {
     opacity: 0.9;
 }
 
-/* Refresh Hint */
+/* Hints and messages */
 .refresh-hint {
     display: none;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
     padding: 10px 12px;
-    background: rgba(229, 9, 20, 0.1);
-    border: 1px solid rgba(229, 9, 20, 0.2);
+    background: rgba(10, 132, 255, 0.1);
+    border: 1px solid rgba(10, 132, 255, 0.2);
     border-radius: 8px;
     font-size: 12px;
-    color: #e50914;
+    color: #5eaaff;
     font-weight: 500;
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.refresh-hint svg {
-    flex-shrink: 0;
-    opacity: 0.8;
-    animation: rotate 2s linear infinite;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .refresh-hint.show {
-    display: flex;
+    display: block;
 }
 
-/* Disabled state */
-.toggle-section.disabled #status-text {
+.site-status {
+    font-size: 12px;
+    color: #999;
+    padding: 0 2px;
+}
+
+.site-status.on {
+    color: #6fcf97;
+}
+
+.hint {
+    font-size: 11.5px;
+    color: #888;
+    line-height: 1.4;
+}
+
+.hint.center {
+    text-align: center;
+    margin-top: -4px;
+}
+
+.msg {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #bbb;
+}
+
+.msg.ok {
+    color: #6fcf97;
+}
+
+.msg.error {
+    color: #ff7b72;
+}
+
+/* Cards */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+}
+
+.card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: #888;
 }
 
-/* Status text color variations */
-#status-text.inactive {
-    color: #999;
+.banner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(10, 132, 255, 0.1);
+    border: 1px solid rgba(10, 132, 255, 0.25);
+    border-radius: 8px;
+    color: #cfe4ff;
 }
 
-/* Smooth transitions */
-.toggle-section,
-#status-text,
-.status-desc {
-    transition: all 0.2s ease;
+.path {
+    display: block;
+    padding: 8px 10px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    word-break: break-all;
+    user-select: all;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #bbb;
+    font-size: 12px;
+}
+
+/* Rows and buttons */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.row.space {
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+    background: #2c2c2c;
+    border-color: #444;
+}
+
+.btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.btn.small {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.btn.wide {
+    width: 100%;
+}
+
+.btn.primary {
+    background: #0a84ff;
+    border-color: #0a84ff;
+}
+
+.btn.primary:hover:not(:disabled) {
+    background: #2b94ff;
+    border-color: #2b94ff;
+}
+
+/* Advanced */
+.warn {
+    padding: 12px;
+    background: rgba(255, 159, 10, 0.1);
+    border: 1px solid rgba(255, 159, 10, 0.35);
+    border-radius: 10px;
+    color: #ffc266;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.warn strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #ffb340;
+}
+
+#adv-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.field-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ddd;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px 10px;
+    background: #111;
+    border: 1px solid #2f2f2f;
+    border-radius: 8px;
+    color: #fff;
+    font: inherit;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+}
+
+select {
+    font-family: inherit;
+}
+
+textarea {
+    resize: vertical;
+    line-height: 1.4;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #0a84ff;
 }
