@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const statusText = document.getElementById('status-text');
 
     // Key to use for local storage in the page context
-    const STORAGE_KEY = 'netflix-fix-enabled';
+    const STORAGE_KEY = 'airplay-fix-enabled';
 
     // Function to get state from the active tab
     async function getTabState() {
