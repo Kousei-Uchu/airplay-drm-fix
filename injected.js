@@ -1,7 +1,7 @@
 (function() {
     try {
         // Check for toggle state (default to enabled if null)
-        const isEnabled = localStorage.getItem('netflix-fix-enabled');
+        const isEnabled = localStorage.getItem('airplay-fix-enabled');
         if (isEnabled === 'false') {
             return;
         }
