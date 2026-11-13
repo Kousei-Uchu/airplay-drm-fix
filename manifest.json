@@ -1,17 +1,22 @@
 {
   "manifest_version": 3,
-  "name": "Netflix ScreenShare Fix",
-  "version": "1.1",
-  "author": "Nikolaos Papoutsakis",
-  "homepage_url": "https://github.com/npapoutsakis/netflix-screenshare-fix",
-  "description": "Prevents black screen on Discord ScreenShare",
+  "name": "Netflix & Disney+ AirPlay Fix",
+  "version": "2.0",
+  "author": "Kousei Uchu",
+  "homepage_url": "https://github.com/Kousei-Uchu/netflix-disney-screenshare-fix",
+  "description": "Prevents black screen on AirPlay",
   "permissions": [
     "scripting",
     "activeTab",
     "declarativeContent"
   ],
   "host_permissions": [
-    "*://*.netflix.com/*"
+    "*://*.netflix.com/*",
+    "*://*.disneyplus.com/*",
+    "*://*.dssott.com/*",
+    "*://*.disney-plus.net/*",
+    "*://*.dssedge.com/*",
+    "*://*.search-api-disney.bamgrid.com/*",
   ],
   "background": {
     "service_worker": "background.js"
@@ -25,7 +30,12 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.netflix.com/*"
+        "*://*.netflix.com/*",
+        "*://*.disneyplus.com/*",
+        "*://*.dssott.com/*",
+        "*://*.disney-plus.net/*",
+        "*://*.dssedge.com/*",
+        "*://*.search-api-disney.bamgrid.com/*",
       ],
       "js": [
         "injected.js"
